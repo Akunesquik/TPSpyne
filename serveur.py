@@ -3,17 +3,13 @@ from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
 
 # Importez les fichiers de vos services supplémentaires
-from services.service_extraction_infos_metier import ServiceExtractionInfosMetier
-from services.service_verif_solvabilite import ServiceVerifSolvabilite
-from services.service_evaluation_propriete import ServiceEvaluationPropriete
-from services.service_decision_approbation import ServiceDecisionApprobation
+from services.service_extraction_infos_metier import application_service_extraction_infos_metier
+from services.service_verif_solvabilite import application_service_verif_solvabilite
+from services.service_evaluation_propriete import application_service_evaluation_propriete
+from services.service_decision_approbation import application_service_decision_approbation
 
-# Ajoutez les services supplémentaires à l'application existante
-application = Application([ServiceExtractionInfosMetier,
-                           ServiceVerifSolvabilite, ServiceEvaluationPropriete,
-                           ServiceDecisionApprobation], 'serveur',
-                          in_protocol=Soap11(validator='lxml'),
-                          out_protocol=Soap11())
+
+application = [application_service_extraction_infos_metier,application_service_verif_solvabilite,application_service_evaluation_propriete,application_service_decision_approbation]
 
 wsgi_application = WsgiApplication(application)
 

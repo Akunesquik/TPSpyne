@@ -16,3 +16,7 @@ class ServiceEvaluationPropriete(ServiceBase):
     def conformite_legale_et_reglementaire(ctx, propriete):
         # Implémentez la conformité légale et réglementaire ici
         return propriete
+
+application_service_evaluation_propriete = Application([ServiceEvaluationPropriete], 'http://localhost:8000/service_evaluation_propriete/?wsdl',
+                          in_protocol=Soap11(validator='lxml'),
+                          out_protocol=Soap11())

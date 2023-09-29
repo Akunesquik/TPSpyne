@@ -1,11 +1,15 @@
 from suds.client import Client
 
 
-# Créez un client SOAP pour le service
-client = Client('http://localhost:8000/?wsdl')
+# Créez un client pour l'application
+client_extraction_infos_metier = Client('http://localhost:8000/service_extraction_infos_metier/?wsdl')
 
-# Appelez la méthode `pretraitement_de_texte()`
-result = client.service.pretraitement_de_texte("Texte à traiter")
+
+# Utilisez les fonctions du client pour appeler les méthodes du service
+result_extraction = client_extraction_infos_metier.service.pretraitement_de_texte("Texte à traiter")
+
+
+
 
 # Affichez le résultat
-print(result)
+print("Résultat de l'extraction d'infos métier:", result_extraction)

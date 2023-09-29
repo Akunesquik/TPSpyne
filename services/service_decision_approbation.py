@@ -33,3 +33,6 @@ class ServiceDecisionApprobation(ServiceBase):
         return performances
 
 
+application_service_decision_approbation = Application([ServiceDecisionApprobation], 'http://localhost:8000/service_decision_approbation/?wsdl',
+                          in_protocol=Soap11(validator='lxml'),
+                          out_protocol=Soap11())
