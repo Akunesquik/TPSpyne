@@ -1,5 +1,6 @@
 from spyne import Application, rpc, ServiceBase, Unicode
 from spyne.protocol.soap import Soap11
+from spyne.server.wsgi import WsgiApplication
 
 class ServiceEvaluationPropriete(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
@@ -16,3 +17,11 @@ class ServiceEvaluationPropriete(ServiceBase):
     def conformite_legale_et_reglementaire(ctx, propriete):
         # Implémentez la conformité légale et réglementaire ici
         return propriete
+
+applicationEvalPropr = Application([ServiceEvaluationPropriete],
+    tns='EvaluationPropriete',
+    in_protocol=Soap11(validator='lxml'),
+    out_protocol=Soap11()
+)
+
+wsgi_appEvalPropr = WsgiApplication(applicationEvalPropr)

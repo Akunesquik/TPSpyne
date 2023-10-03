@@ -1,31 +1,21 @@
-from spyne import Application
-from spyne.protocol.soap import Soap11
-from spyne.server.wsgi import WsgiApplication
+import sys
+from spyne.util.wsgi_wrapper import run_twisted
 
-# Importez les fichiers de vos services supplémentaires
-from services.service_extraction_infos_metier import ServiceExtractionInfosMetier
-from services.service_verif_solvabilite import ServiceVerifSolvabilite
-from services.service_evaluation_propriete import ServiceEvaluationPropriete
-from services.service_decision_approbation import ServiceDecisionApprobation
 
-# Ajoutez les services supplémentaires à l'application existante
-application = Application([ServiceExtractionInfosMetier,
-                           ServiceVerifSolvabilite, ServiceEvaluationPropriete,
-                           ServiceDecisionApprobation], 'serveur',
-                          in_protocol=Soap11(validator='lxml'),
-                          out_protocol=Soap11())
-
-wsgi_application = WsgiApplication(application)
+from services.service_decision_approbation import wsgi_appDeciAppro
+from services.service_evaluation_propriete import wsgi_appEvalPropr
+from services.service_extraction_infos_metier import wsgi_appInfoMetier
+from services.service_verif_solvabilite import wsgi_appVeriSolv
 
 if __name__ == '__main__':
-    import logging
-    from wsgiref.simple_server import make_server
 
-    logging.basicConfig(level=logging.DEBUG)
-    logging.getLogger('spyne.protocol.xml').setLevel(logging.DEBUG)
+    twisted_apps = [
+        (wsgi_appDeciAppro, b'DeciAppro'),
+        (wsgi_appEvalPropr, b'EvalPropr'),
+        (wsgi_appInfoMetier, b'InfoMetier'),
+        (wsgi_appVeriSolv, b'VeriSolv'),
+    ]
 
-    logging.info("listening to http://127.0.0.1:8000")
-    logging.info("wsdl is at: http://localhost:8000/?wsdl")
-
-    server = make_server('127.0.0.1', 8000, wsgi_application)
-    server.serve_forever()
+    sys.exit(run_twisted(twisted_apps, 8000))
+    
+    

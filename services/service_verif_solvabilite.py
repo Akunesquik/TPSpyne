@@ -1,5 +1,6 @@
 from spyne import Application, rpc, ServiceBase, Unicode
 from spyne.protocol.soap import Soap11
+from spyne.server.wsgi import WsgiApplication
 
 class ServiceVerifSolvabilite(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
@@ -20,3 +21,10 @@ class ServiceVerifSolvabilite(ServiceBase):
         return demande_credit
 
 
+applicationVeriSolv = Application([ServiceVerifSolvabilite],
+    tns='VerifSolvabilite',
+    in_protocol=Soap11(validator='lxml'),
+    out_protocol=Soap11()
+)
+
+wsgi_appVeriSolv = WsgiApplication(applicationVeriSolv)

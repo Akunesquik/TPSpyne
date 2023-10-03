@@ -13,6 +13,8 @@ deactivate
 
 # installer les packages necessaires au bon fonctionnement du programme
 
+pip install twisted
+
 pip install spyne
 
 pip install suds

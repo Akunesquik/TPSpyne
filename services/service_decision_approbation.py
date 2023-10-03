@@ -1,5 +1,6 @@
 from spyne import Application, rpc, ServiceBase, Unicode
 from spyne.protocol.soap import Soap11
+from spyne.server.wsgi import WsgiApplication
 
 class ServiceDecisionApprobation(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
@@ -31,5 +32,13 @@ class ServiceDecisionApprobation(ServiceBase):
     def suivi_de_performances(ctx, performances):
         # Implémentez le suivi de performances ici
         return performances
+
+applicationDeciAppro = Application([ServiceDecisionApprobation],
+    tns='DecisionApprobation',
+    in_protocol=Soap11(validator='lxml'),
+    out_protocol=Soap11()
+)
+
+wsgi_appDeciAppro = WsgiApplication(applicationDeciAppro)
 
 
