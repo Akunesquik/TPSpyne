@@ -18,6 +18,7 @@ class ServiceEvaluationPropriete(ServiceBase):
         # Implémentez la conformité légale et réglementaire ici
         return propriete
 
+#Création de l'application à lancer sur le serveur
 applicationEvalPropr = Application([ServiceEvaluationPropriete],
     tns='EvaluationPropriete',
     in_protocol=Soap11(validator='lxml'),

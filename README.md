@@ -1,6 +1,6 @@
-## TPSpyne
+# TPSpyne
 
-# Creer un nouvel environnement python et l'activer
+## Creer un nouvel environnement python et l'activer
 
 pip install virtualenv
 
@@ -11,7 +11,7 @@ TPSpyne\Scripts\activate
 #desactiver le virtualenv creer plus tot : 
 deactivate
 
-# installer les packages necessaires au bon fonctionnement du programme
+## Installation des packages necessaires au programme
 
 pip install twisted
 

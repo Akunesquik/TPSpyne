@@ -1,5 +1,8 @@
 from suds.client import Client
 
+#Client permet d'acceder a l'URL afin d'appeler les fonctions des services
+#On les appelle de la forme suivante :
+# Client.service.nomDeLaFonction(args...)
 C1 = Client('http://localhost:8000/DeciAppro?wsdl')
 print(C1.service.analyses_des_risques('DeciAppro'))
 

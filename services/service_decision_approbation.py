@@ -33,6 +33,7 @@ class ServiceDecisionApprobation(ServiceBase):
         # Implémentez le suivi de performances ici
         return performances
 
+#Création de l'application à lancer sur le serveur
 applicationDeciAppro = Application([ServiceDecisionApprobation],
     tns='DecisionApprobation',
     in_protocol=Soap11(validator='lxml'),

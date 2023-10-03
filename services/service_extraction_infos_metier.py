@@ -8,6 +8,7 @@ class ServiceExtractionInfosMetier(ServiceBase):
         # Implémentez le prétraitement du texte ici
         return texte
 
+#Création de l'application à lancer sur le serveur
 applicationInfoMetier = Application([ServiceExtractionInfosMetier],
     tns='ExtractionInfosMetier',
     in_protocol=Soap11(validator='lxml'),

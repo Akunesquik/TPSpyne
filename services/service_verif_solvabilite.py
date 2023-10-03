@@ -20,7 +20,7 @@ class ServiceVerifSolvabilite(ServiceBase):
         # Implémentez votre logique ici
         return demande_credit
 
-
+#Création de l'application à lancer sur le serveur
 applicationVeriSolv = Application([ServiceVerifSolvabilite],
     tns='VerifSolvabilite',
     in_protocol=Soap11(validator='lxml'),
