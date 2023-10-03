@@ -4,7 +4,7 @@
 
 pip install virtualenv
 
-virtualenv TPSpyne 
+python -m virtualenv TPSpyne
 
 TPSpyne\Scripts\activate
 
