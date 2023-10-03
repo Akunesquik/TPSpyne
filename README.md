@@ -8,10 +8,12 @@ python -m virtualenv TPSpyne
 
 TPSpyne\Scripts\activate
 
-#desactiver le virtualenv creer plus tot : 
+### desactiver le virtualenv creer plus tot : 
 deactivate
 
 ## Installation des packages necessaires au programme
+
+pip install watchdog
 
 pip install twisted
 
