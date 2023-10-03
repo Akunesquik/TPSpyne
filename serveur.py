@@ -1,6 +1,7 @@
 import sys
 from spyne.util.wsgi_wrapper import run_twisted
-
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 from services.service_decision_approbation import wsgi_appDeciAppro
 from services.service_evaluation_propriete import wsgi_appEvalPropr

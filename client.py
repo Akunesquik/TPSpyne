@@ -4,10 +4,10 @@ from suds.client import Client
 #On les appelle de la forme suivante :
 # Client.service.nomDeLaFonction(args...)
 C1 = Client('http://localhost:8000/DeciAppro?wsdl')
-print(C1.service.analyses_des_risques('DeciAppro'))
+plop = C1.service.analyses_des_risques('HAHAHA')
 
 C2 = Client('http://localhost:8000/EvalPropr?wsdl')
-print(C2.service.analyse_des_donnees_du_marche_immobilier('EvalPropr'))
+print(C2.service.analyse_des_donnees_du_marche_immobilier(plop))
 
 C3 = Client('http://localhost:8000/InfoMetier?wsdl')
 print(C3.service.pretraitement_de_texte('InfoMetier'))
