@@ -1,0 +1,9 @@
+Nom du client: Bern
+Prénom du client: Stephane
+Entrees d'argent: 3000
+Sorties d'argent: 2000
+Taux de risque: 5
+Emprunts en cours: 
+15
+2000
+10000

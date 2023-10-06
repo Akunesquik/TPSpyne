@@ -8,7 +8,7 @@ from watchdog.events import FileSystemEventHandler
 folder_to_watch = "depot/"
 
 # Commande pour exécuter le client.py
-client_command = "python client.py"
+client_command = "python client2.py"
 
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
