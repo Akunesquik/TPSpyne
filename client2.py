@@ -14,12 +14,15 @@ with open(filename, 'r') as file:
 
 
 C1 = Client('http://localhost:8000/InfoMetier?wsdl')
-print("Progression 0% ", end='\r')
+print("\nExtraction des informations en cours\nentrée : fichier : " + filename)
 valueC1 = C1.service.Extraction_information(contenu_fichier)
-print("Progression 6% #")
+print("sortie : tableau de 4 string comportant les infos necessaires pour l'evaluation du credit" )
+print("\nIntegration_des_bureaux_de_credit en cours\nentrée : str : " + valueC1[0])
 valueC3_1=C1.service.integration_des_bureaux_de_credit(valueC1[0])#nouveau déplacé
-print("plop2")
+print("sortie : " + valueC3_1)
+
 C2 = Client('http://localhost:8000/SWC?wsdl')
+print("\nConnexion au Service Web Composite \nentrées : str : " + valueC1[1] + "&& str : " + valueC1[1])
 reponse_content = C2.service.execution_des_services(valueC1[1],valueC1[2],valueC3_1)
 
 
@@ -31,6 +34,6 @@ nom_fichier = Nom_Prenom + "_reponse.txt"
 with open(Path_Fichier+Nom_Prenom+ "_reponse.txt", 'w', encoding='utf-8') as fichier:
     fichier.write(reponse_content)
 
-print("Votre réponse de crédit se trouve dans : " + Path_Fichier + nom_fichier)
+print("\nVotre réponse de crédit se trouve dans : " + Path_Fichier + nom_fichier)
 
 #def func(con1 con2)
