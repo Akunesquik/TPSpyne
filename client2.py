@@ -31,4 +31,14 @@ C4_1=C4.service.analyses_des_risques((valueC1[2]+"*"+valueC2_1+"*"+valueC3_3))
 C4_2=C4.service.modele_de_prediction(C4_1)
 C4_3=C4.service.politiques_de_linstitu_financiere(C4_2)
 C4_4=C4.service.prise_de_decision(C4_3)
-print(C4.service.communication_de_la_decision(C4_4))
+
+# Nom du fichier dans lequel vous souhaitez écrire le résultat
+Nom_Prenom = "plop"
+Path_Fichier = "reponse_credit/"
+# Résultat de votre fonction
+nom_fichier = Nom_Prenom + "_reponse.txt"
+# Écriture du résultat dans le fichier
+with open(Path_Fichier+nom_fichier, 'w', encoding='utf-8') as fichier:
+    fichier.write(C4.service.communication_de_la_decision(C4_4))
+
+print("Votre réponse de crédit se trouve dans : " +Path_Fichier+ nom_fichier)
