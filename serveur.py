@@ -9,6 +9,7 @@ from services.service_decision_approbation import wsgi_appDeciAppro
 from services.service_evaluation_propriete import wsgi_appEvalPropr
 from services.service_extraction_infos_metier import wsgi_appInfoMetier
 from services.service_verif_solvabilite import wsgi_appVeriSolv
+from services.ServiceWebComposite import wsgi_appSWC
 
 if __name__ == '__main__':
 
@@ -20,6 +21,7 @@ if __name__ == '__main__':
         (wsgi_appEvalPropr, b'EvalPropr'),
         (wsgi_appInfoMetier, b'InfoMetier'),
         (wsgi_appVeriSolv, b'VeriSolv'),
+        (wsgi_appSWC, b'SWC'),
     ]
     print("serveur Allumé")
     #run le serveur au port 8000
