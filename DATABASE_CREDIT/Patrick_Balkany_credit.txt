@@ -1,0 +1,7 @@
+Nom du client: Balkany
+Prénom du client: Patrick
+Entrees d'argent: 15000
+Sorties d'argent: 2000
+Taux de risque: 10
+Emprunts en cours: 
+0

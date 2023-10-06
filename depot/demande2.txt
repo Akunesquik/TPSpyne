@@ -1,0 +1,13 @@
+Nom du client: Balkany
+Prénom du client: Patrick
+Adresse: Prison lol
+Email: levallois@gmail.com
+Montant du prêt demandé: 1500000 EUR
+Valeur Propriété: 1450000 EUR
+Durée du prêt: 15 ans
+Description de la propriété:5 m2 ressenti 25m2
+Région de location: 1
+Évaluation du promoteur: 3
+Respecte la loi: NON
+Objectif: PROPRIETE
+Age: 75
