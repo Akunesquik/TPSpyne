@@ -21,7 +21,9 @@ if __name__ == '__main__':
         (wsgi_appInfoMetier, b'InfoMetier'),
         (wsgi_appVeriSolv, b'VeriSolv'),
     ]
+    print("serveur Allumé")
     #run le serveur au port 8000
     sys.exit(run_twisted(twisted_apps, 8000))
+    
     
     

@@ -1,8 +1,6 @@
 from spyne import Application, rpc, ServiceBase, Unicode,String,Array
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
-import json
-import os
 
 class ServiceExtractionInfosMetier(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
@@ -10,7 +8,7 @@ class ServiceExtractionInfosMetier(ServiceBase):
         # Implémentez le prétraitement du texte ici
         return texte
     
-    @rpc(Unicode, _returns=[String,String,String])
+    @rpc(Unicode, _returns=[String,String,String,String])
     def Extraction_information(ctx,fichierOuvert):
         tableau_resultat=[]
         
@@ -43,8 +41,8 @@ class ServiceExtractionInfosMetier(ServiceBase):
         JSON_Decision+="respecte_loi: "+ tableau_resultat[10][1]+";"
         JSON_Decision+="Valeur_emprunt: "+tableau_resultat[5][1].split(' ')[0]+";"
         
-        
-        return JSON_Verif_Solv,JSON_Eval_Prop,JSON_Decision
+        JSON_NP=tableau_resultat[1][1]+"_"+tableau_resultat[0][1]
+        return JSON_Verif_Solv,JSON_Eval_Prop,JSON_Decision,JSON_NP
     
     
 #Création de l'application à lancer sur le serveur

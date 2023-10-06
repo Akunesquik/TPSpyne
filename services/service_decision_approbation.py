@@ -1,7 +1,6 @@
-from spyne import Application, rpc, ServiceBase, Unicode, String
+from spyne import Application, rpc, ServiceBase, String
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
-import json
 
 class ServiceDecisionApprobation(ServiceBase):
     @rpc(String, _returns=String)
@@ -50,7 +49,7 @@ class ServiceDecisionApprobation(ServiceBase):
         for j in range(len(prets_temp)-1):
             Autres_prets+=[int(prets_temp[j])]
         
-        print("\n\n tableau prets: ",Autres_prets,"\n\n")
+        #print("\n\n tableau prets: ",Autres_prets,"\n\n")
         PolitiqueA=1#refus de clients sans benefice net
         PolitiqueB=50000#refus de dettes superieures à #valeur#
         PolitiqueC=3.0#taux de risque maximum envisagé par la banque
@@ -64,12 +63,12 @@ class ServiceDecisionApprobation(ServiceBase):
         
         Taux_de_risque=Taux_de_risque+(Somme_dettes/10000)
         
-        print("taux de risque lie aux dettes: ",Taux_de_risque)
+        #print("taux de risque lie aux dettes: ",Taux_de_risque)
         
         
         Taux_de_risque=Taux_de_risque-Score_Credit/2
         
-        print("taux de risque lie au score de credit: ",Taux_de_risque)
+        #print("taux de risque lie au score de credit: ",Taux_de_risque)
         
         
         
@@ -126,7 +125,7 @@ class ServiceDecisionApprobation(ServiceBase):
         
         Taux_de_risque=Taux_de_risque*(PolitiqueD+1)
         
-        print("taux de risque lie au taux d'interet: ",Taux_de_risque)
+        #print("taux de risque lie au taux d'interet: ",Taux_de_risque)
         
         if Revenus<Depenses and PolitiqueA==1:
             Refuse="OUI"
@@ -179,23 +178,23 @@ class ServiceDecisionApprobation(ServiceBase):
         if Age+Duree_emprunt>100:
             Taux_de_risque=Taux_de_risque-(100-(Age+Duree_emprunt))*2
         
-        print("taux de risque lie à l'age: ",Taux_de_risque)
+        #print("taux de risque lie à l'age: ",Taux_de_risque)
         
         if Valeur_propriete>Valeur_pret:
             Taux_de_risque=Taux_de_risque-((Valeur_propriete-Valeur_pret)/10000)
         
-        print("taux de risque lie à la valuation de la propriete: ",Taux_de_risque)
+        #print("taux de risque lie à la valuation de la propriete: ",Taux_de_risque)
         
         if Valeur_propriete<Valeur_pret:
             Taux_de_risque=Taux_de_risque-((Valeur_propriete-Valeur_pret)/5000)
         
-        print("taux de risque lie à la dévaluation de la propriete: ",Taux_de_risque)
+        #print("taux de risque lie à la dévaluation de la propriete: ",Taux_de_risque)
         
         if Revenus>Depenses:
             if ((Revenus-Depenses)*Duree_emprunt)<Valeur_pret:
                 Taux_de_risque+=(Valeur_pret-((Revenus-Depenses)*Duree_emprunt*12))/1000
         
-        print("taux de risque lie au ratio emprunt/capacite à rembourser: ",Taux_de_risque)
+        #print("taux de risque lie au ratio emprunt/capacite à rembourser: ",Taux_de_risque)
         
         
         JSON_Decision=""
@@ -283,9 +282,9 @@ class ServiceDecisionApprobation(ServiceBase):
             tableau_solvabilite+=[elements]
         
         
-        print("\n\n tableau_information: ",tableau_information,"\n\n")
-        print("\n\n tableau_valeur_propriete: ",tableau_valeur_propriete,"\n\n")
-        print("\n\n tableau_solvabilite: ",tableau_solvabilite,"\n\n")
+        #print("\n\n tableau_information: ",tableau_information,"\n\n")
+        #print("\n\n tableau_valeur_propriete: ",tableau_valeur_propriete,"\n\n")
+        #print("\n\n tableau_solvabilite: ",tableau_solvabilite,"\n\n")
         
         
         Duree_emprunt=int(tableau_information[0][1])
@@ -306,7 +305,7 @@ class ServiceDecisionApprobation(ServiceBase):
         for j in range(len(prets_temp)-1):
             Autres_prets+=[int(prets_temp[j])]
         
-        print("\n\n tableau prets: ",Autres_prets,"\n\n")
+        #print("\n\n tableau prets: ",Autres_prets,"\n\n")
         PolitiqueA=1#refus de clients sans benefice net
         PolitiqueB=50000#refus de dettes superieures à #valeur#
         PolitiqueC=3.0#taux de risque maximum envisagé par la banque
@@ -316,7 +315,7 @@ class ServiceDecisionApprobation(ServiceBase):
         if Age+Duree_emprunt>100:
             Taux_de_risque=Taux_de_risque-(100-(Age+Duree_emprunt))*2
         
-        print("taux de risque lie à l'age: ",Taux_de_risque)
+        #print("taux de risque lie à l'age: ",Taux_de_risque)
         
         Somme_dettes=0
         for k in Autres_prets:
@@ -324,31 +323,31 @@ class ServiceDecisionApprobation(ServiceBase):
         
         Taux_de_risque=Taux_de_risque+(Somme_dettes/10000)
         
-        print("taux de risque lie aux dettes: ",Taux_de_risque)
+        #print("taux de risque lie aux dettes: ",Taux_de_risque)
         
         if Valeur_propriete>Valeur_pret:
             Taux_de_risque=Taux_de_risque-((Valeur_propriete-Valeur_pret)/10000)
         
-        print("taux de risque lie à la valuation de la propriete: ",Taux_de_risque)
+        #print("taux de risque lie à la valuation de la propriete: ",Taux_de_risque)
         
         if Valeur_propriete<Valeur_pret:
             Taux_de_risque=Taux_de_risque-((Valeur_propriete-Valeur_pret)/5000)
         
-        print("taux de risque lie à la dévaluation de la propriete: ",Taux_de_risque)
+        #print("taux de risque lie à la dévaluation de la propriete: ",Taux_de_risque)
         
         if Entree>Sorties:
             if ((Entree-Sorties)*Duree_emprunt)<Valeur_pret:
                 Taux_de_risque+=(Valeur_pret-((Entree-Sorties)*Duree_emprunt*12))/1000
         
-        print("taux de risque lie au ratio emprunt/capacite à rembourser: ",Taux_de_risque)
+        #print("taux de risque lie au ratio emprunt/capacite à rembourser: ",Taux_de_risque)
         
         Taux_de_risque=Taux_de_risque*(PolitiqueD+1)
         
-        print("taux de risque lie au taux d'interet: ",Taux_de_risque)
+        #print("taux de risque lie au taux d'interet: ",Taux_de_risque)
         
         Taux_de_risque=Taux_de_risque-Score_Credit/2
         
-        print("taux de risque lie au score de credit: ",Taux_de_risque)
+        #print("taux de risque lie au score de credit: ",Taux_de_risque)
         
         if Entree<Sorties and PolitiqueA==1:
             return "Entree d'argent inferieures aux sorties d'argent, impossible de preter dans ces conditions"
