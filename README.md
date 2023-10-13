@@ -25,5 +25,6 @@ python serveur.py
 python listener.py
 
 
-## Ajouter un fichier .txt du bon format dans le dossier depot pour lancer le client
+## UTILISATION
+Ajouter un fichier .txt du bon format dans le dossier depot pour lancer le client
 nous utilisons "client2.py" comme client
