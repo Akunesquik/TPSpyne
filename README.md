@@ -9,7 +9,8 @@ python -m virtualenv TPSpyne
 
 virtualenv TPSpyne
 ###
-
+Changer la politique d'execution si elle est en restricted par défaut : 
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser     
 TPSpyne\Scripts\activate
 
 #desactiver le virtualenv creer plus tot : 
