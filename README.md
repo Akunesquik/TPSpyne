@@ -6,6 +6,7 @@ pip install virtualenv
 
 ### Une des deux selon ce qui fonctionne
 python -m virtualenv TPSpyne
+
 virtualenv TPSpyne
 ###
 Changer la politique d'execution si elle est en restricted par défaut : 
